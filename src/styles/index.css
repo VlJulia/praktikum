@@ -1,3 +1,263 @@
-body{
+@font-face {
+  src: url("https://pictures.s3.yandex.net/fonts/istokregular.woff2")
+      format("woff2"),
+    url("https://pictures.s3.yandex.net/fonts/istokregular.woff") format("woff"),
+    url("https://pictures.s3.yandex.net/fonts/istokregular.ttf")
+      format("truetype");
+  font-family: "Istok Web";
+  font-weight: normal;
+}
+
+body {
+  background-color: black;
+  color: white;
+  padding: 45px 0;
+  display: flex;
+  flex-direction: column;
+  font-family: "Istok Web";
+}
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+body > * {
+  width: 69.8%;
+  align-self: center;
+}
+img {
+  object-fit: contain;
+}
+button {
+  background-color: transparent;
+  border: 1px solid white;
+  transition: 0.3s;
+}
+button:hover {
+  opacity: 0.4;
+}
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+    background-color: white;
+    border-radius: 10px;
+    padding: 36px;
+    position: relative;
+    color: black;
+    z-index: 15;
+}
+.modal_button {
     background-color: black;
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21.78px;
+    width: 358px;
+    border-radius: 2px;
+    height: 50px;
+}
+.modal_button:disabled{
+    background-color: transparent;
+    color: #5454549e;
+    border:1px solid #5454549e;
+}
+.modal_input {
+    font-size: 14px;
+    font-weight: 400;
+    height: 27px;
+    border: 0;
+    border-bottom: 1px black solid;
+}
+.close-button {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    border: 0;
+    padding: 0;
+}
+.new-avatar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 48px;
+}
+
+.are-you-sure{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 38px;
+}
+.profile-edit{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 38px;
+}
+.inputs-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    border: 0;
+    padding: 0;
+}
+.new-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 38px;
+}
+.header {
+    height: 5.45vw;
+    min-height: fit-content;
+    display: inline-block;
+    border-bottom: 1px #545454 solid;
+    margin-bottom: 40px;
+}
+
+.profile {
+    height: 9.375vw;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.avatar {
+    position: relative;
+    height: fit-content;
+  width: fit-content;
+  border-radius: 60px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+.avatar-hover {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.avatar-hover img {
+    height: 21.7%;
+}
+.avatar-hover:hover {
+    opacity: 0.8;
+}
+.profile-info {
+    height: fit-content;
+    margin-top: 18px;
+}
+.profile-name-line {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+.profile-name {
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 56px;
+}
+.description {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21.78px;
+}
+.edit-button {
+    width: 24px;
+    margin-left: 17px;
+    aspect-ratio: 1 / 1;
+}
+
+.add-button {
+    margin-left: auto;
+    aspect-ratio: 3 / 1;
+    height: min(4vw, 50px);
+    align-self: center;
+}
+
+.content {
+    display: grid;
+    max-width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    gap: 18px;
+    overflow: hidden;
+    margin-top: 50px;
+}
+
+.card {
+    aspect-ratio: 1/1.28;
+    display: flex;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    justify-content: flex-start;
+    flex-direction: column;
+    position: relative;
+}
+.card-image {
+    width: 100%;
+    object-fit: fill;
+    aspect-ratio: 1 / 1;
+    display: block;
+}
+
+.card-description {
+    height: 100%;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+h4 {
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29.05px;
+}
+.like-container {
+    justify-items: center;
+    font-weight: 400;
+    font-size: 13px;
+}
+.like {
+    padding: 0;
+}
+.trash {
+    position: absolute;
+    top: 18px;
+    right: 15px;
+    border: 0;
+    width: min-content;
+    /*
+    */
+}
+
+.modal>*{
+    display: none;
+}
+
+.show {
+  display: flex;
 }
