@@ -1,6 +1,8 @@
 import * as Header from './header.js';
 import * as Card from './card.js';
 import * as Validate from './validate.js';
+import {changeProfileInfo,changeProfileAvatar} from './fetchFunc/changeProfile.js';
+import {newCardSend} from './fetchFunc/cardSend.js';
 
 const modal_new_card = document.querySelector(".modal__new-card");
 const modal_edit_profile = document.querySelector(".modal__profile-edit");
@@ -20,6 +22,13 @@ function hideOverlay(){
     }, 301);
     Card.delCard(del_card);
     del_card=false;
+    modal.querySelectorAll('.modal__input').forEach((elem)=>{
+        elem.value=""; 
+        elem.dispatchEvent( new Event('input', {
+            bubbles: true,
+            cancelable: true
+        }));
+    });
 }
 export function showOverlay(modal_class){
     overlay.classList.add('show');
@@ -59,32 +68,36 @@ modal_are_you_sure.addEventListener('click', function(event){
 });
 modal_new_card.addEventListener('submit', function(event){
     event.preventDefault();
-    const text =  modal_new_card.querySelector("input[name='card-name']").value;
-    const img =  modal_new_card.querySelector("input[name='card-img-url']").value;
-    const new_card = Card.newCard(img, text);
-    document.querySelector('.content').appendChild(new_card);
+    newCardSend().then((res)=>{
+        Card.appendCard(res.link, res.name, true, res._id, res.likes.length);
+    }
+    );
     hideOverlay();
 });
 modal_edit_profile.addEventListener('submit', function(event){
     event.preventDefault();
-    const text =  modal_edit_profile.querySelector("input[name='profile-name']").value;
-    const about =  modal_edit_profile.querySelector("input[name='profile-about-self']").value;
-    document.querySelector('#profile-name').textContent=text;
-    document.querySelector('#profile-about-self').textContent=about;
-    if (document.querySelector('.profile').classList.contains('profile_open')) {Header.openHeader();}
-    if (Header.canOpenHeader()) {
-        document.querySelector('.profile').addEventListener('click', Header.openHeader);
-        document.querySelector('.profile').style.cursor ="pointer";
+    changeProfileInfo().then(
+        (res)=>{
+        document.querySelector('#profile-name').textContent = res.name;
+        document.querySelector('#profile-about-self').textContent = res.about;
+
+        if (document.querySelector('.profile').classList.contains('profile_open')) {Header.openHeader();}
+        if (Header.canOpenHeader()) {
+            document.querySelector('.profile').addEventListener('click', Header.openHeader);
+            document.querySelector('.profile').style.cursor ="pointer";
+        }
+        else{
+            document.querySelector('.profile').removeEventListener ('click', Header.openHeader);
+            document.querySelector('.profile').style.cursor ="unset";
+        }
     }
-    else{
-        document.querySelector('.profile').removeEventListener ('click', Header.openHeader);
-        document.querySelector('.profile').style.cursor ="unset";
-    }
+    );
     hideOverlay();
 });
 modal_new_avatar.addEventListener('submit', function(event){
     event.preventDefault();
     const img =  modal_new_avatar.querySelector("input[name='avatar-img-url']").value;
+    changeProfileAvatar(img);
     document.querySelector('#profile-avatar').src=img;
     hideOverlay();
 });

@@ -1,46 +1,28 @@
 import {showOverlay} from './modal';
 import liked from '../images/liked.svg';
 import not_liked from '../images/like.svg';
-import image_tmpl from '../images/card-templ.jpg';
 import trash from '../images/trash.svg';
+import {sendLike, delLike} from './fetchFunc/likeSend';
+import {delCardSend} from './fetchFunc/cardSend';
+
 const cards = document.querySelectorAll('.card');
+
 //создание карт и напонение
-cards.forEach(card => {
-    card.querySelector('.card__trash').addEventListener('click', function() {
-        card.remove();
-    });
 
-    const like = card.querySelector('.card__like-container');
-
-    like.addEventListener('click', function() {
-        const img= like.querySelector("img");
-        const num= like.querySelector(".card__like-counter");
-        if (like.classList.contains('card__like-container_active')){
-            like.classList.remove('card__like-container_active');
-            img.src = not_liked;
-            num.textContent = Number(num.textContent) - 1 ;
-        }
-        else{
-        like.classList.add('card__like-container_active');
-        img.src = liked;
-        num.textContent = Number(num.textContent) + 1 ;
-        }
-
-    });
-
-});
-
-export function newCard(img_url, text){
+export function newCard(img_url, text, _my, _id, _likes=0 ,like_status= false){
     var card = document.createElement('article');
     card.className = 'card';
+    card.my = _my;
     // Создаем кнопку для удаления
-    var trashButton = document.createElement('button');
-    trashButton.className = 'card__trash';
-    var trashImage = document.createElement('img');
-    trashImage.src = trash; // Замените путь к изображению
-    trashButton.appendChild(trashImage);
-    card.appendChild(trashButton);
-
+    if (_my){
+        var trashButton = document.createElement('button');
+        trashButton.className = 'card__trash';
+        var trashImage = document.createElement('img');
+        trashImage.src = trash; // Замените путь к изображению
+        trashButton.appendChild(trashImage);
+        card.appendChild(trashButton);
+    }
+    card.id = _id;
     // Создаем изображение карточки
     var cardImage = document.createElement('img');
     cardImage.className = 'card__image';
@@ -65,7 +47,12 @@ export function newCard(img_url, text){
     var likeButton = document.createElement('button');
     likeButton.className = 'card__like';
     var likeImage = document.createElement('img');
-    likeImage.src = not_liked; 
+    if (like_status)  
+        {
+         likeImage.src = liked;
+         likeContainer.classList.add('card__like-container_active');
+        }
+    else likeImage.src = not_liked; 
     likeImage.alt = 'Лайк';
     likeButton.appendChild(likeImage);
     likeContainer.appendChild(likeButton);
@@ -73,7 +60,7 @@ export function newCard(img_url, text){
     // Создаем счетчик лайков
     var likeCounter = document.createElement('p');
     likeCounter.className = 'card__like-counter';
-    likeCounter.textContent = '0';
+    likeCounter.textContent = _likes;
     likeContainer.appendChild(likeCounter);
 
     // Добавляем контейнер лайков в описание карточки
@@ -85,36 +72,52 @@ export function newCard(img_url, text){
         const img= likeContainer.querySelector("img");
         const num= likeContainer.querySelector(".card__like-counter");
         if (likeContainer.classList.contains('card__like-container_active')){
-            likeContainer.classList.remove('card__like-container_active');
-            img.src = not_liked;
-            num.textContent = Number(num.textContent) - 1 ;
+            const new_inf = delLike(card.id).then((res)=>
+                {
+                    num.textContent = res.likes.length; ;
+                    likeContainer.classList.remove('card__like-container_active');
+                    img.src = not_liked;
+                }
+            )
         }
         else{
-        likeContainer.classList.add('card__like-container_active');
-        img.src = liked;
-        num.textContent = Number(num.textContent) + 1 ;
+            sendLike(card.id).then((res)=>
+                {
+                    num.textContent = res.likes.length; ;
+                    likeContainer.classList.add('card__like-container_active');
+                    img.src = liked;
+                }
+            );
         }
 
     });
+    if(_my){
     card.vanDel = false;
     trashButton.addEventListener('click', function() {
         card.classList.add("card_del");
         showOverlay('modal__are-you-sure');
     });
-
+    }
     return card;
 };
 
 export function delCard(yes){
     const del = document.querySelector(".card_del");
     if(!del) return;
-    if (yes){
-        setTimeout(()=>{del.style.opacity=0;}, 300);
-        setTimeout(()=>{ del.remove();}, 500);
-    }
-    else{
-        del.classList.remove("card_del");
-    }
+    if(!del.my) return;
+    delCardSend(del.id).then(()=>{
+        if (yes){
+            setTimeout(()=>{del.style.opacity=0;}, 300);
+            setTimeout(()=>{ del.remove();}, 500);
+        }
+        else{
+            del.classList.remove("card_del");
+        }
+    })
 }
 
 
+export function appendCard(img_url, text, _my, _id="", _likes=0 ,like_status= false){
+    const new_card = newCard(img_url, text, _my, _id, _likes, like_status);
+    document.querySelector('.content').appendChild(new_card);
+}
