@@ -1,0 +1,15 @@
+.card {
+  aspect-ratio: 1/1.28;
+  display: flex;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: relative;
+  transition: opacity 0.3s ease;
+}
+.card_del {
+  background-color: rgb(232, 191, 191);
+}

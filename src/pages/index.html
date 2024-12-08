@@ -4,14 +4,14 @@
   <body>
     <div class="overlay">
       <div class="modal">
-        <button class="close-button">
-          <img src="<%=require('./images/close.svg')%>" alt="x" />
+        <button class="modal__close-button">
+          <img src="<%=require('../images/close.svg')%>" alt="x" />
         </button>
-        <form class="new-avatar">
+        <form class="modal__new-avatar">
           <h4>Обновить аватар</h4>
-          <div class="input-line">
+          <div class="modal__input-line">
             <input
-              class="modal_input"
+              class="modal__input"
               type="url"
               placeholder="Ссылка на изображение"
               name="avatar-img-url"
@@ -21,22 +21,22 @@
             <label for="avatar-img-url">Неправильное значение</label>
           </div>
           <input
-            class="modal_button"
+            class="modal__button"
             type="submit"
             value="Сохранить"
             disabled
           />
         </form>
-        <div class="are-you-sure">
+        <div class="modal__are-you-sure">
           <h4>Вы уверены?</h4>
-          <input class="modal_button" type="submit" value="Да" />
+          <input class="modal__button" type="submit" value="Да" />
         </div>
-        <form class="profile-edit">
+        <form class="modal__profile-edit">
           <h4>Редактироавать профиль</h4>
-          <fieldset class="inputs-column">
-            <div class="input-line">
+          <fieldset class="modal__inputs-column">
+            <div class="modal__input-line">
               <input
-                class="modal_input"
+                class="modal__input"
                 placeholder="Имя"
                 type="text"
                 pattern=".{2,40}"
@@ -46,9 +46,9 @@
               />
               <label for="profile-name-edit">Неправильное значение</label>
             </div>
-            <div class="input-line">
+            <div class="modal__input-line">
               <input
-                class="modal_input"
+                class="modal__input"
                 placeholder="О себе"
                 type="text"
                 pattern=".{2,200}"
@@ -60,18 +60,18 @@
             </div>
           </fieldset>
           <input
-            class="modal_button"
+            class="modal__button"
             value="Сохранение..."
             type="submit"
             disabled
           />
         </form>
-        <form class="new-card">
+        <form class="modal__new-card">
           <h4>Новое место</h4>
-          <fieldset class="inputs-column">
-            <div class="input-line">
+          <fieldset class="modal__inputs-column">
+            <div class="modal__input-line">
               <input
-                class="modal_input"
+                class="modal__input"
                 placeholder="Название"
                 type="text"
                 name="card-name"
@@ -81,9 +81,9 @@
               />
               <label for="card-name">Неправильное значение</label>
             </div>
-            <div class="input-line">
+            <div class="modal__input-line">
               <input
-                class="modal_input"
+                class="modal__input"
                 placeholder="Ссылка на картинку"
                 type="url"
                 name="card-img-url"
@@ -94,7 +94,7 @@
             </div>
           </fieldset>
           <input
-            class="modal_button"
+            class="modal__button"
             for="new-card"
             type="submit"
             value="Создать"
@@ -104,73 +104,73 @@
       </div>
     </div>
     <header class="header">
-      <div class="logo">
-        <img src="<%=require('./images/logo.svg')%>" alt="Логотип" />
+      <div class="header__logo">
+        <img src="<%=require('../images/logo.svg')%>" alt="Логотип" />
       </div>
     </header>
     <main>
       <div class="profile">
-        <div class="avatar">
+        <div class="profile__avatar">
           <img
-            src="<%=require('./images/templ_avatar.png')%>"
+            src="<%=require('../images/templ_avatar.png')%>"
             alt="avatar"
             id="profile-avatar"
           />
-          <div class="avatar-hover">
-            <img src="<%=require('./images/pen.svg')%>" />
+          <div class="profile__avatar-hover">
+            <img src="<%=require('../images/pen.svg')%>" />
           </div>
         </div>
-        <div class="profile-info">
-          <div class="profile-name-line">
-            <h1 class="profile-name" id="profile-name">Жак-Ив Кусто</h1>
-            <button class="edit-button">
-              <img src="<%=require('./images/pen.svg')%>" />
+        <div class="profile__info">
+          <div class="profile__name-line">
+            <h1 class="profile__name" id="profile-name">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button">
+              <img src="<%=require('../images/pen.svg')%>" />
             </button>
           </div>
-          <h2 class="description" id="profile-about-self">
+          <h2 class="profile__about-self" id="profile-about-self">
             Исследователь океана
           </h2>
         </div>
         <button class="add-button">
-          <img src="<%=require('./images/add.svg')%>" alt="Add" />
+          <img src="<%=require('../images/add.svg')%>" alt="Add" />
         </button>
       </div>
       <div class="content">
         <article class="card">
-          <button class="trash">
-            <img src="<%=require('./images/trash.svg')%>" alt="Add" />
+          <button class="card__trash">
+            <img src="<%=require('../images/trash.svg')%>" alt="Add" />
           </button>
           <img
-            class="card-image"
-            src="<%=require('./images/card-templ.jpg')%>"
+            class="card__image"
+            src="<%=require('../images/card-templ.jpg')%>"
             alt="Add"
           />
-          <div class="card-description">
-            <h4 class="card-name">Карачаевск</h4>
-            <div class="like-container">
-              <button class="like">
-                <img src="<%=require('./images/like.svg')%>" alt="like" />
+          <div class="card__description">
+            <h4 class="card__name">Карачаевск</h4>
+            <div class="card__like-container">
+              <button class="card__like">
+                <img src="<%=require('../images/like.svg')%>" alt="like" />
               </button>
-              <p class="like-counter">5</p>
+              <p class="card__like-counter">5</p>
             </div>
           </div>
         </article>
         <article class="card">
-          <button class="trash">
-            <img src="<%=require('./images/trash.svg')%>" alt="Add" />
+          <button class="card__trash">
+            <img src="<%=require('../images/trash.svg')%>" alt="Add" />
           </button>
           <img
-            class="card-image"
-            src="<%=require('./images/card-templ.jpg')%>"
+            class="card__image"
+            src="<%=require('../images/card-templ.jpg')%>"
             alt="Add"
           />
-          <div class="card-description">
-            <h4 class="card-name">Карачаевск</h4>
-            <div class="like-container active">
-              <button class="like">
-                <img src="<%=require('./images/liked.svg')%>" alt="like" />
+          <div class="card__description">
+            <h4 class="card__name">Карачаевск</h4>
+            <div class="card__like-container card__like-container_active">
+              <button class="card__like">
+                <img src="<%=require('../images/liked.svg')%>" alt="like" />
               </button>
-              <p class="like-counter">5</p>
+              <p class="card__like-counter">5</p>
             </div>
           </div>
         </article>

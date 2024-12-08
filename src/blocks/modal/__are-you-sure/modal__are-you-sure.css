@@ -1,0 +1,6 @@
+.modal__are-you-sure {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 38px;
+}

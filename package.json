@@ -2,7 +2,7 @@
   "name": "yandex_praktikum",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "pages/components/index.js",
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack serve"

@@ -1,0 +1,9 @@
+.header {
+  height: 5.45vw;
+  min-height: fit-content;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-bottom: 1px #545454 solid;
+  margin-bottom: 40px;
+}

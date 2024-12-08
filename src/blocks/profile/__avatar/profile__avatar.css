@@ -1,0 +1,40 @@
+.profile__avatar {
+  transition: 3s;
+  position: relative;
+  min-height: 9.375vw;
+  min-width: 9.375vw;
+  aspect-ratio: 1 / 1;
+  border-radius: 10vw;
+  overflow: hidden;
+  transition: all 2s ease;
+}
+.profile__avatar img {
+  width: 100%;
+  height: 100%;
+}
+.profile__avatar-hover {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.profile__avatar-hover img {
+  height: 21.7%;
+}
+.profile__avatar-hover:hover {
+  opacity: 0.8;
+}
+@media (max-width: 768px) {
+  .profile_column .profile__avatar {
+    width: 70vw;
+    height: 70vw;
+  }
+}

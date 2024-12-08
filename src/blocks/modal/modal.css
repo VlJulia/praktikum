@@ -1,0 +1,97 @@
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+
+.modal {
+  background-color: white;
+  border-radius: 10px;
+  padding: 36px;
+  position: relative;
+  color: black;
+  z-index: 15;
+  transition: opacity 0.3s ease;
+}
+
+.modal__button {
+  background-color: black;
+  color: white;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.78px;
+  width: 358px;
+  border: 0;
+  border-radius: 2px;
+  height: 50px;
+  transition: all 1s ease;
+}
+.modal__button:disabled {
+  background-color: transparent;
+  color: #5454549e;
+  border: 1px solid #5454549e;
+}
+
+.modal__input {
+  font-size: 14px;
+  font-weight: 400;
+  height: 27px;
+  border: 0;
+  border-bottom: 1px black solid;
+}
+.modal__inputs-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  border: 0;
+  padding: 0;
+}
+
+.modal__input-line {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+.modal__input-line > label {
+  color: transparent;
+}
+.modal__input-line.error > label {
+  color: red;
+}
+.modal__input-line.error > input {
+  border-bottom: 1px solid red;
+}
+
+.modal > * {
+  display: none;
+}
+
+.modal__close-button {
+  display: block;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  border: 0;
+  padding: 0;
+}
+
+.modal__button:hover {
+  background-color: #5454549e;
+}
+
+.show {
+  animation: overlayAnimationShow 0.3s ease forwards;
+  display: flex;
+}

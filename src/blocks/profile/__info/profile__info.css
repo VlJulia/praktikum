@@ -1,0 +1,54 @@
+.profile__info {
+  height: fit-content;
+  padding-bottom: 3px;
+  margin: auto 0;
+  max-width: 39vw;
+  transition: all 0.3s ease;
+}
+.profile__name-line {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.profile__name {
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 56px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.profile__about-self {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.78px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.profile_column .profile__info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: wrap;
+  margin: 10px;
+}
+.profile_column .profile__about-self,
+.profile_column .profile__name {
+  max-width: 100%;
+  white-space: normal;
+  overflow: unset;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: unset;
+}
+
+
+.profile__edit-button {
+  cursor: pointer;
+  width: 24px;
+  margin-left: 17px;
+  aspect-ratio: 1 / 1;
+}
