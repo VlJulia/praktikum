@@ -1,1 +1,0 @@
-# yandex_mesto_jv
