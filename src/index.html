@@ -20,11 +20,16 @@
             />
             <label for="avatar-img-url">Неправильное значение</label>
           </div>
-          <button class="modal_button" disabled>Сохранить</button>
+          <input
+            class="modal_button"
+            type="submit"
+            value="Сохранить"
+            disabled
+          />
         </form>
         <div class="are-you-sure">
           <h4>Вы уверены?</h4>
-          <button class="modal_button">Да</button>
+          <input class="modal_button" type="submit" value="Да" />
         </div>
         <form class="profile-edit">
           <h4>Редактироавать профиль</h4>
@@ -54,7 +59,12 @@
               <label for="profile-about-self-edit">Неправильное значение</label>
             </div>
           </fieldset>
-          <button class="modal_button" disabled>Сохранение...</button>
+          <input
+            class="modal_button"
+            value="Сохранение..."
+            type="submit"
+            disabled
+          />
         </form>
         <form class="new-card">
           <h4>Новое место</h4>
@@ -83,7 +93,13 @@
               <label for="card-img-url">Неправильное значение</label>
             </div>
           </fieldset>
-          <button class="modal_button" for="new-card" disabled>Создать</button>
+          <input
+            class="modal_button"
+            for="new-card"
+            type="submit"
+            value="Создать"
+            disabled
+          />
         </form>
       </div>
     </div>
@@ -95,7 +111,11 @@
     <main>
       <div class="profile">
         <div class="avatar">
-          <img src="<%=require('./images/templ_avatar.png')%>" alt="avatar"  id="profile-avatar">
+          <img
+            src="<%=require('./images/templ_avatar.png')%>"
+            alt="avatar"
+            id="profile-avatar"
+          />
           <div class="avatar-hover">
             <img src="<%=require('./images/pen.svg')%>" />
           </div>
