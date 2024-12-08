@@ -7,48 +7,84 @@
         <button class="close-button">
           <img src="<%=require('./images/close.svg')%>" alt="x" />
         </button>
-        <div class="new-avatar">
+        <form class="new-avatar">
           <h4>Обновить аватар</h4>
-          <input class="modal_input" />
-          <input
-            class="modal_button"
-            type="submit"
-            value="Сохранить"
-            placeholder="Ссылка на изображение"
-            disabled
-          />
-        </div>
+          <div class="input-line">
+            <input
+              class="modal_input"
+              type="url"
+              placeholder="Ссылка на изображение"
+              name="avatar-img-url"
+              id="avatar-img-url"
+              required
+            />
+            <label for="avatar-img-url">Неправильное значение</label>
+          </div>
+          <button class="modal_button" disabled>Сохранить</button>
+        </form>
         <div class="are-you-sure">
           <h4>Вы уверены?</h4>
-          <input class="modal_button" type="submit" value="Да" />
+          <button class="modal_button">Да</button>
         </div>
-        <div class="profile-edit">
+        <form class="profile-edit">
           <h4>Редактироавать профиль</h4>
           <fieldset class="inputs-column">
-            <input class="modal_input" placeholder="Имя" />
-            <input class="modal_input" placeholder="О себе" />
+            <div class="input-line">
+              <input
+                class="modal_input"
+                placeholder="Имя"
+                type="text"
+                pattern=".{2,40}"
+                name="profile-name"
+                id="profile-name-edit"
+                required
+              />
+              <label for="profile-name-edit">Неправильное значение</label>
+            </div>
+            <div class="input-line">
+              <input
+                class="modal_input"
+                placeholder="О себе"
+                type="text"
+                pattern=".{2,200}"
+                name="profile-about-self"
+                id="profile-about-self-edit"
+                required
+              />
+              <label for="profile-about-self-edit">Неправильное значение</label>
+            </div>
           </fieldset>
-          <input
-            class="modal_button"
-            type="submit"
-            value="Сохранение..."
-            disabled
-          />
-        </div>
-        <div class="new-card">
+          <button class="modal_button" disabled>Сохранение...</button>
+        </form>
+        <form class="new-card">
           <h4>Новое место</h4>
           <fieldset class="inputs-column">
-            <input class="modal_input" placeholder="Название" />
-            <input class="modal_input" placeholder="Ссылка на картинку" />
+            <div class="input-line">
+              <input
+                class="modal_input"
+                placeholder="Название"
+                type="text"
+                name="card-name"
+                id="card-name"
+                pattern=".{2,30}"
+                required
+              />
+              <label for="card-name">Неправильное значение</label>
+            </div>
+            <div class="input-line">
+              <input
+                class="modal_input"
+                placeholder="Ссылка на картинку"
+                type="url"
+                name="card-img-url"
+                id="card-img-url"
+                required
+              />
+              <label for="card-img-url">Неправильное значение</label>
+            </div>
           </fieldset>
-          <input
-            class="modal_button"
-            type="submit"
-            value="Создать"
-            for="new-card"
-            disabled
-          />
-        </div>
+          <button class="modal_button" for="new-card" disabled>Создать</button>
+        </form>
       </div>
     </div>
     <header class="header">
@@ -59,19 +95,21 @@
     <main>
       <div class="profile">
         <div class="avatar">
-          <img src="<%=require('./images/templ_avatar.png')%>" alt="avatar" />
+          <img src="<%=require('./images/templ_avatar.png')%>" alt="avatar"  id="profile-avatar">
           <div class="avatar-hover">
             <img src="<%=require('./images/pen.svg')%>" />
           </div>
         </div>
         <div class="profile-info">
           <div class="profile-name-line">
-            <h1 class="profile-name">Жак-Ив Кусто</h1>
+            <h1 class="profile-name" id="profile-name">Жак-Ив Кусто</h1>
             <button class="edit-button">
               <img src="<%=require('./images/pen.svg')%>" />
             </button>
           </div>
-          <h2 class="description">Исследователь океана</h2>
+          <h2 class="description" id="profile-about-self">
+            Исследователь океана
+          </h2>
         </div>
         <button class="add-button">
           <img src="<%=require('./images/add.svg')%>" alt="Add" />
@@ -118,6 +156,8 @@
         </article>
       </div>
     </main>
-    <footer></footer>
+    <footer class="footer">
+      <p>© 2020 Mesto Russia</p>
+    </footer>
   </body>
 </html>
