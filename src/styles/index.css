@@ -29,11 +29,15 @@ body {
   flex-direction: column;
   font-family: "Istok Web";
   align-items: center;
+  scrollbar-width: none;
   @media (max-width: 768px) {
     padding: 45px 5%;
   }
 }
-main{
+::-webkit-scrollbar {
+  display: none;
+}
+main {
   width: 100%;
 }
 h1,
@@ -69,7 +73,6 @@ h4 {
   font-size: 24px;
   line-height: 29.05px;
 }
-
 
 .footer {
   margin-top: 65px;
