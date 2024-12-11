@@ -29,12 +29,13 @@ function hideOverlay(){
             cancelable: true
         }));
     });
+    document.body.style.overflow = 'auto';
 }
 export function showOverlay(modal_class){
     overlay.classList.add('show');
     overlay.querySelector('.modal').style.opacity = 1;
     overlay.querySelector(`.${modal_class}`).classList.add('show');
-
+    document.body.style.overflow = 'hidden';
 }
 overlay.addEventListener('click',  hideOverlay);
 overlay.querySelector('.modal__close-button').addEventListener('click',  hideOverlay);
